@@ -1,0 +1,33 @@
+Introduction:
+_________________
+1:need for system:-
+   suggest the best deal 
+   with lowest price 
+   based on user 
+   specified constraints 
+   and community 
+   reviews.
+-------------------------------
+2:System functions & systems:-
+   trivago is a search 
+   engine that compare
+   many hotel deals 
+   on diffrent apps and 
+   websites(other 
+   systems) then it sorts 
+   it to show best deal to 
+   user.
+--------------------------------
+3:How system fits organization:-
+   trivago company 
+   earns its profit by
+   advertising to partners 
+   in a free or fee-based 
+   on partnership,it is 
+   also use (CPC) 
+   business model. 
+   Booking platforms, 
+   hoteliers and other providers list rates and advertise on the Trivago site, 
+   paying for the clicks received from Trivago users,and This is consistent 
+   with the general system of the company.   
+--------------------------------

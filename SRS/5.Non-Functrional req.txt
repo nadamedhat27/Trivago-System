@@ -1,0 +1,34 @@
+1- programming languages:-
+   -front end langs & libs:
+      .HTML5
+      .CSS3
+      .SASS
+      .JS
+      .VUE.JS
+      .BOOTSTRAP
+   -back end langs & libs:
+      .PHP
+      .SQL
+      .LARAVEL
+------------------------------------
+2- IDE:-
+   .VS code
+   .DOCKER
+   .GITHUB
+   .XAMPP
+------------------------------------
+3- dev method:-
+   Agile: scrum.
+------------------------------------
+4- response time:-
+  250ms per search query.
+------------------------------------
+5- I/O device cap:-
+   responsive website.
+------------------------------------
+6- Reliability:-
+   handle big number of user at same time.
+-----------------------------------
+7- storage req
+   mediun storage servers.
+-----------------------------------

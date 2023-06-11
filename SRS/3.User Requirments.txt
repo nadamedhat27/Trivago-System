@@ -1,0 +1,6 @@
+- site should be easy to use.
+- simple look.
+- search results should be fast.
+- results should appear sorted where the best deal is on top.
+- prices can be displayed in different currencies. 
+- site should be translated in different languages. 
