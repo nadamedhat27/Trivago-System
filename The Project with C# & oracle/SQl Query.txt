@@ -1,0 +1,132 @@
+CREATION
+-----------
+
+CREATE TABLE HELP_CENTER(
+	ID NUMBER,
+	COMPLAINT VARCHAR2 100,
+	EMAIL VARCHAR2 20,
+	DATE VARCHAR2 20,
+	ADMIN_ID NUMBER,
+	PRIMARY KEY (ID),
+	FOREIGN KEY (EMAIL) REFERENCES USERS(EMAIL),
+	FOREIGN KEY (ADMIN_ID) REFERENCES ADMINS(ID));
+
+CREATE TABLE ADMIN(
+	ID NUMBER,
+	NAME VARCHAR2 20,
+	EMAIL VARCHAR2 20,
+	PASSWORD VARCHAR2 20,
+	PRIMARY KEY (ID));
+
+CREATE TABLE HOTELS(
+	HOTEL_NAME VARCHAR2 20,
+	RATING NUMBER,
+	LOCATION VARCHAR2 20,
+	SPONSOR_NAME VARCHAR2 20,
+	PRIMARY KEY (HOTEL_NAME),
+	FOREIGN KEY (SPONSOR_NAME) REFERENCES SPONSORS(NAME));
+
+CREATE TABLE REVIEWES(
+	ID NUMBER,
+	TEXT VARCHAR2 200,
+	DATE VARCHAR2 20,
+	EMAIL VARCHAR2 20,
+	RATING NUMBER,
+	SPONSOR_NAME VARCHAR2 20,
+	PRIMARY KEY (ID),
+	FOREIGN KEY (EMAIL) REFERENCES USERS(EMAIL),
+	FOREIGN KEY (SPONSOR_NAME) REFERENCES SPONSORS(NAME));
+
+CREATE TABLE SPONSORS(
+	NAME VARCHAR2 20,
+	URL VARCHAR2 20,
+	PRIORITY NUMBER, 
+	PRIMARY KEY (NAME));
+
+CREATE TABLE USERS(
+	NAME VARCHAR2 20,
+	EMAIL VARCHAR2 20,
+	PASSWORD VARCHAR2 20,
+	NATIONALITY VARCHAR2 20,
+	PRIMARY KEY (EMAIL));
+
+
+
+----------------------------------------------------------
+
+INSERTION
+-----------
+
+USERS:
+------
+INSERT INTO ('Mohamed_Esam', 'Essam@gmail', 'ahgh', 'Egyption');
+INSERT INTO ('Ahmed_Ali', 'ahmed@gmail', 'abcd', 'Egyption');
+INSERT INTO ('Mohamed_Esam', 'Mo@gmail', '1234', 'Egyption');
+INSERT INTO ('John_Tom', 'Jony@gmail', '4545', 'American');
+INSERT INTO ('Rana_Magdy', 'Rana@gmail', '35345', 'Egyption');
+INSERT INTO ('Lara_Mehrez', 'Lara@gmail', 'qwrwe', 'Lebanon');
+INSERT INTO ('asmaa', 'asmaa@gmail', 'weger', 'Egypt');
+INSERT INTO ('Nada', 'nada@gmail', '1234', 'egypt');
+
+SPONSERS:
+---------
+INSERT INTO ('Safar.com', 'https://myanimelist.net/', '1');
+INSERT INTO ('Rehla.com', 'https://myanimelist.net/', '3');
+INSERT INTO ('Travel.com', 'https://myanimelist.net/', '4');
+INSERT INTO ('Booking.com', 'https://myanimelist.net/', '9');
+
+REVIEWES:
+---------
+INSERT INTO ('2', 'Site is Good', '14/3/2015', 'Rana@gmail', '2', 'Rehla.com');
+INSERT INTO ('1', 'Site is not fast', '22/8/2010', 'ahmed@gmail', '3', 'Safar.com');
+INSERT INTO ('3', 'Site is easy to use', '22/11/2023', 'Lara@gmail', '5', 'Travel.com');
+INSERT INTO ('4', 'Site is not secure', '23/12/2021', 'Rana@gmail', '4', 'Booking.com');
+INSERT INTO ('7', 'good staff', '10/6/2017', 'nada@gmail', '4', 'Safar.com');
+INSERT INTO ('5', 'search is not good enough', '14/5/2019', 'nada@gmail', '3', 'Travel.com');
+INSERT INTO ('6', 'server not responding', '19/9/2019', 'asmaa@gmail', '1', 'Booking.com');
+INSERT INTO ('8', 'service was excellent', '15/4/2023', 'Rana@gmail', '5', 'Safar.com');
+INSERT INTO ('9', 'website is hard to use', '9/8/2014', 'nada@gmail', '1', 'Rehla.com');
+
+HOTELS:
+-------
+INSERT INTO ('Ansatsu Kyoushitshu', '3', 'Cairo', 'Rehla.com');
+INSERT INTO ('nanatsu no taizai', '4', 'Aswan', 'Safar.com');
+INSERT INTO ('Shingeki no Kyojin', '5', 'Berlen', 'Travel.com');
+INSERT INTO ('jujutsu kaisen', '2', 'Giza', 'Booking.com');
+INSERT INTO ('Nijma', '3', 'Cairo', 'Rehla.com');
+INSERT INTO ('Zahra', '4', 'Nile', 'Safar.com');
+INSERT INTO ('Rose', '5', 'Berlen', 'Travel.com');
+INSERT INTO ('RedSee', '2', 'Giza', 'Booking.com');
+
+HELP_CENTER:
+------------
+INSERT INTO ('2', 'Manager is not good', 'Lara@gmail', '22/5/2023', '2');
+INSERT INTO ('1', 'Food is not good', 'ahmed@gmail', '22/2/2011', '1');
+
+ADMIN:
+------
+INSERT INTO ('2', 'Fares_Alaa', 'Fares@gmail', 'wertt');
+INSERT INTO ('1', 'Sarah_Hesham', 'Sarah@gmail', 'wertt');
+
+
+
+
+Stored Procedures :
+	Procedure 1 to return hotel rating 
+		{ create or replace
+		PROCEDURE RETURN_RATING (hname in VARCHAR2 ,hrating OUT NUMBER)
+		AS
+		BEGIN 
+		SELECT rating  into hrating from hotels where hotel_name = hname  ;
+		END RETURN_RATING; }
+
+
+	Procedure 2 to return hotel name by it’s site name
+		{ create or replace PROCEDURE SITESHOTELS(site_name in VARCHAR2, hotelss out sys_refcursor)
+		AS
+		BEGIN
+		open hotelss for 
+		SELECT H.hotel_name FROM hotels H    
+		  WHERE H.sponsor_name= site_name;
+		END SITESHOTELS; }
+
